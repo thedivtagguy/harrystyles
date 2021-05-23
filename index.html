@@ -113,11 +113,15 @@
                 <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2 text-sm">🎵...i'm just thinking out loud. i don't ever tell you what an honor to have some kinda bladder infection....🎵</span> <br> <br> could be your jam for a while, here
                 it is.
             </p>
-            <div class="flex justify-center mt-8 space-x-3 py-8">
-                <input type="text" name="email" class="block w-full px-4 lg:w-2/6 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none bg-gray-100" placeholder="Email address + Press Enter">
+            <div class="flex justify-center mt-8 space-x-3 py-4">
+                <form action="https://tinyletter.com/dundermifflin" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/dundermifflin', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+                    <input type="text" name="email" id="tlemail" data-behavior="placeholder" class="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none bg-gray-100" placeholder="Email address">
+                    <input type="submit" placeholder="Well, alright" class="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg">
+                </form>
             </div>
         </div>
     </section>
+
 
 
     <!-- Section 1 -->
