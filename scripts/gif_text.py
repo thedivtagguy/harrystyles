@@ -21,7 +21,7 @@ def make_gif():
     michael_beatles = []
     
     # Columns to Arrays
-    with open(os.path.abspath("data/lyrics"), 'r') as f:
+    with open(os.path.abspath("data/lyrics.csv"), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             michael_harry.append(row.get('michael_harry'))
