@@ -4,7 +4,7 @@ from datetime import datetime
 import os.path
 
 def upload_gifs():    
-    gif_path = '../gifs/'
+    gif_path = os.path.abspath("gifs")
     counter = 0
     
     date = datetime.today().strftime('%Y-%m-%d')
@@ -54,7 +54,7 @@ def upload_gifs():
     x = 0
 
     # Write headers only if new file
-    with open ('../data/urls.csv', 'a') as csvfile:
+    with open (os.path.abspath("data/urls"), 'a') as csvfile:
         field_names= ['path', 'artists', 'date', 'id']
         writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=field_names)
     

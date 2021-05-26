@@ -9,6 +9,7 @@ import json
 import csv
 import pandas as pd
 import cloudinary
+import os
 import time
 
 def send_newsletter():    
@@ -25,7 +26,7 @@ def send_newsletter():
     
     item = int(item) + 1
     item = str(item)
-    mood = cloudinary.uploader.upload("../emails/headers/tm"+item+".jpg")
+    mood = cloudinary.uploader.upload(os.path.abspath("emails/headers/tm")+item+".jpg")
     mood = mood['url']
     ###### Variables for the Emails #######
     
@@ -61,7 +62,7 @@ def send_newsletter():
     
     
     date = datetime.today().strftime('%Y-%m-%d')      
-    df = pd.read_csv("../data/urls.csv")
+    df = pd.read_csv(os.path.abspath("data/urls.csv"))
     # Select today's date
     df = df.loc[df['date'] == date]
     
@@ -74,7 +75,6 @@ def send_newsletter():
     
     ####### Pulling the Lines for Today's Email#########
     
-    csv_file = '../data/lyrics.csv'
     
     # Define the Arrays
     michael_harry = []
@@ -83,7 +83,7 @@ def send_newsletter():
     michael_beatles = []
     
     # Columns to Arrays
-    with open(csv_file, 'r') as f:
+    with open(os.path.abspath("data/lyrics.csv"), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             michael_harry.append(row.get('michael_harry'))

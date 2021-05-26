@@ -3,8 +3,8 @@ import requests
 import io
 import random
 import csv
+import os
 import giphy_client
-import time
 from giphy_client.rest import ApiException
 from datetime import datetime
 from textfit import fit_text
@@ -21,7 +21,7 @@ def make_gif():
     michael_beatles = []
     
     # Columns to Arrays
-    with open('../data/lyrics.csv', 'r') as f:
+    with open(os.path.abspath("data/lyrics"), 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             michael_harry.append(row.get('michael_harry'))
@@ -43,7 +43,6 @@ def make_gif():
     quote_dict = {1: mh, 2: dh, 3: db, 4: mb}
     
     
-    tags = ["mb", "dh", "db", "mh"]
     mic_b = ["michael scott", "the beatles", "john lennon", "the office"]
     dwi_b = ["dwight schrute", "the beatles", "the office", "rock and roll"]
     mic_h = ["michael scott", "harry styles", "watermelon sugar" ]
@@ -102,7 +101,7 @@ def make_gif():
         my_bytes = io.BytesIO()                                                                
         
         gif_name = artists + "_" + date
-        file_path = '../gifs/' + gif_name + '.gif'
+        file_path = os.path.abspath("gifs") + gif_name + '.gif'
         frames[0].save(file_path, save_all=True, append_images=frames[1:])
         
         batch = batch + 1
