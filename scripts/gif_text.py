@@ -108,6 +108,6 @@ def make_gif():
         
         batch = batch + 1
         
-    print("Created GIFs for " + date + " ,uploading them now...")
+    print("Created GIFs for " + date + ", uploading them now...")
 
     

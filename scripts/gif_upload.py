@@ -1,12 +1,10 @@
 from giphypop import upload
 import csv
-import io
 from datetime import datetime
-import pandas as pd
+import os.path
 
 def upload_gifs():    
     gif_path = '../gifs/'
-    urls = {}
     counter = 0
     
     date = datetime.today().strftime('%Y-%m-%d')
@@ -52,11 +50,25 @@ def upload_gifs():
         counter = counter + 1
         
     field_names= ['path', 'artists', 'date', 'id']
+    file_exists = os.path.isfile('../data/urls.csv')
+    x = 0
+
+    # Write headers only if new file
+    with open ('../data/urls.csv', 'a') as csvfile:
+        field_names= ['path', 'artists', 'date', 'id']
+        writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=field_names)
     
-    with open('../data/urls.csv',  newline='', mode='a') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=field_names)
-        writer.writeheader()
-        writer.writerows(gif_dict)
+        if not file_exists:
+            writer.writeheader()  # file doesn't exist yet, write a header
+        
+        while x < 4:
+            writer.writerow({'path': gif_dict[x]['path'], 
+                             'artists': gif_dict[x]['artists'],
+                             'date': gif_dict[x]['date'], 
+                             'id': gif_dict[x]['id']
+                             })
+            x = x + 1
+
         
     print("Uploaded GIFs and IDs written to CSV for " + date)
     

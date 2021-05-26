@@ -1,20 +1,32 @@
 import smtplib, ssl
 from email.message import EmailMessage
 from email.utils import make_msgid
-import mimetypes
 from random import randint
 import requests
+import datetime
 from datetime import datetime
 import json
 import csv
 import pandas as pd
-from imgurpython import ImgurClient
-
+import cloudinary
+import time
 
 def send_newsletter():    
-    gif_path = '../gifs/'
-    tm_path = '../emails/header/'
     
+    cloudinary.config(
+     cloud_name = 'amnbh',  
+     api_key = '466794472738225',  
+     api_secret = 'PupiLVIED2fWACoGRHpREJkwLio'  
+     )
+    
+     # What item are we on?
+    with open('item.txt') as f:
+        item = f.readline()
+    
+    item = int(item) + 1
+    item = str(item)
+    mood = cloudinary.uploader.upload("../emails/headers/tm"+item+".jpg")
+    mood = mood['url']
     ###### Variables for the Emails #######
     
     # Random Stats
@@ -47,11 +59,8 @@ def send_newsletter():
     
     ##### Get the GIFs for today ready #####
     
-    # Filenames
-    date = datetime.today().strftime('%Y-%m-%d')
     
-    
-    
+    date = datetime.today().strftime('%Y-%m-%d')      
     df = pd.read_csv("../data/urls.csv")
     # Select today's date
     df = df.loc[df['date'] == date]
@@ -111,16 +120,12 @@ def send_newsletter():
     msg = EmailMessage()
     
     # generic email headers
-    msg['Subject'] = subjectline + ' | ' + 'Shitposts for Rhe '
-    msg['From'] = 'Messrs. DBMH dwightbeatlesmichaelharry@gmail.com'
+    msg['Subject'] = subjectline + ' | ' + date
+    msg['From'] = 'Shitposts for Rhe dwightbeatlesmichaelharry@gmail.com'
     msg['To'] = 'amanbhargava2001@gmail.com'
     
     # set the plain text body
     msg.set_content(quote)
-    
-    # now create a Content-ID for the image
-    tm = make_msgid(domain='xyz.com')
-    
     
     # set an alternative html body
     msg.add_alternative("""\
@@ -129,7 +134,9 @@ def send_newsletter():
         <div>
         <div style="text-align:center;">
             <img src="https://i.imgur.com/3iwaXVk.jpg">
-            <img src="cid:{tm}" style="padding-bottom:10px;">
+            <img src="{mood}">
+            <h6 style="padding-bottom:10px;font-size:5px;text-align:right;color:gray;">thatsbelievable via tumblr</h6>
+
         </div>
             <div class="message-body">
                 <div class="digest" style="margin-bottom: 3rem;">
@@ -180,8 +187,7 @@ def send_newsletter():
         </div>
     </body>
     </html>
-    """.format(tm=tm[1:-1], 
-               value1=value1, 
+    """.format(value1=value1, 
                value2=value2, 
                quote=quote, 
                dh_q = dh_q, 
@@ -191,19 +197,9 @@ def send_newsletter():
                dh_id = dh_id, 
                db_id = db_id,
                mh_id = mh_id,
-               mb_id = mb_id), subtype='html')
-        
-    # Attaching Tonights Mood
-    with open('../emails/headers/tm1.jpg', 'rb') as mood:
-        # know the Content-Type of the image
-        maintype, subtype = mimetypes.guess_type(mood.name)[0].split('/')
-        # attach it
-        msg.get_payload()[1].add_related(mood.read(), 
-                                             maintype=maintype, 
-                                             subtype=subtype, 
-                                             cid=tm)
-        
-        
+               mb_id = mb_id, 
+               mood = mood), 
+        subtype='html')
         
     # Create secure connection with server and send email
     context = ssl.create_default_context()

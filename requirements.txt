@@ -37,6 +37,7 @@ certifi==2020.12.5
 cffi @ file:///C:/ci/cffi_1613247279197/work
 chardet @ file:///C:/ci/chardet_1607690654534/work
 click @ file:///home/linux1/recipes/ci/click_1610990599742/work
+cloudinary==1.25.0
 cloudpickle @ file:///tmp/build/80754af9/cloudpickle_1598884132938/work
 clyent==1.2.2
 colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
@@ -55,6 +56,7 @@ cymem==2.0.5
 Cython @ file:///C:/ci/cython_1618435363327/work
 cytoolz==0.11.0
 dask @ file:///tmp/build/80754af9/dask-core_1617390489108/work
+DateTime==4.3
 decorator @ file:///tmp/build/80754af9/decorator_1617916966915/work
 defusedxml @ file:///tmp/build/80754af9/defusedxml_1615228127516/work
 diff-match-patch @ file:///tmp/build/80754af9/diff-match-patch_1594828741838/work
@@ -165,6 +167,7 @@ pep8==1.7.1
 pexpect @ file:///tmp/build/80754af9/pexpect_1605563209008/work
 pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
 Pillow @ file:///C:/ci/pillow_1617386341487/work
+pipdeptree==2.0.0
 pkginfo==1.7.0
 pluggy @ file:///C:/ci/pluggy_1615976358795/work
 ply==3.11

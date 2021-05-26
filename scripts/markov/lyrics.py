@@ -13,21 +13,21 @@ class POSifiedText(markovify.Text):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
 
-with open('D:/Data Projects/Automated Newsletter/txt files/michael.txt','r',encoding = 'unicode_escape') as f:
+with open('D:/Data Projects/Automated Newsletter/txt files/breakingbad.txt','r',encoding = 'unicode_escape') as f:
     text1 = f.read()
 
-with open('D:/Data Projects/Automated Newsletter/txt files/beatles.txt','r',encoding = 'unicode_escape') as f:
-    text2 = f.read()
-    
+
+  
 text_model1 = markovify.Text(text1)
-text_model2 = markovify.Text(text2)
 
-model_combo = markovify.combine([ text_model1, text_model2 ], [ 1, 1.5 ])
-
-model_json = model_combo.to_json()
-
-with open('michael_beatles.json', 'w') as outfile:
-    json.dump(model_json, outfile)
-
-# for i in range(10):
-#     print(model_combo.make_sentence())
+def text():
+    for i in range(10):
+        print(text_model1.make_short_sentence(100))
+    
+strings = ["I'm not in danger, Skyler.", 
+           "My name is ASAC Schrader, and you deserve to die.",
+           "I hide in plain sight, same as his taste in lawyers.", 
+           "This is my own private domicile and I will kill your infant daughter.", 
+           "And I watched Jane die.", 
+           "I do not constitute plans in my heart.",
+           ]
