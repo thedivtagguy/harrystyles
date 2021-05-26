@@ -13,7 +13,6 @@ def make_gif():
     date = datetime.today().strftime('%Y-%m-%d')
     # Read in CSV
     
-    csv_file = '../data/lyrics.csv'
     
     # Define the Arrays
     michael_harry = []
@@ -22,7 +21,7 @@ def make_gif():
     michael_beatles = []
     
     # Columns to Arrays
-    with open(csv_file, 'r') as f:
+    with open('../data/lyrics.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             michael_harry.append(row.get('michael_harry'))
