@@ -135,7 +135,7 @@ def send_newsletter():
         <div style="text-align:center;">
             <img src="https://i.imgur.com/3iwaXVk.jpg">
             <img src="{mood}">
-            <h6 style="padding-bottom:10px;font-size:5px;text-align:right;color:gray;">thatsbelievable via tumblr</h6>
+            <h6 style="padding-bottom:10px;font-size:8px;text-align:right;color:gray;">thatsbelievable via tumblr</h6>
 
         </div>
             <div class="message-body">
