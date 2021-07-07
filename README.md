@@ -1,4 +1,4 @@
-# Random THe Office and Harry Styles Shitpost Generator
+# Random The Office and Harry Styles Shitpost Generator
 
 To make a webpage, run `runner.py`. 
 
