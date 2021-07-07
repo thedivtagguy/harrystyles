@@ -9,8 +9,9 @@ import csv
 import pandas as pd
 import cloudinary
 from cloudinary import uploader
+from monsterurl import get_monster
 
-def send_newsletter():    
+def writepage():    
     
     cloudinary.config(
      cloud_name = 'yourthing',  
@@ -22,9 +23,11 @@ def send_newsletter():
     with open('item.txt') as f:
         item = f.readline()
     
-    item = int(item) + 1
-    item = str(item)
-    mood = cloudinary.uploader.upload("../emails/headers/tm"+item+".jpg")
+    item = int(item) 
+    i = str(item)
+    x = item
+    j = item + 1
+    mood = cloudinary.uploader.upload("../emails/headers/tm"+str(j)+".jpg")
     mood = mood['url']
     ###### Variables for the Emails #######
     
@@ -59,10 +62,9 @@ def send_newsletter():
     ##### Get the GIFs for today ready #####
     
     
-    date = datetime.today().strftime('%Y-%m-%d')      
     df = pd.read_csv("../data/urls.csv")
-    # Select today's date
-    df = df.loc[df['date'] == date]
+    # Select Item
+    df = df.loc[df['item'] == x]
     
     dh_id = df.loc[df['artists'] == 'dh']['id'].item()
     db_id = df.loc[df['artists'] == 'db']['id'].item()
@@ -110,38 +112,27 @@ def send_newsletter():
     db_q = str(quote_dict[3]) # Gif 3
     mh_q = str(quote_dict[1]) # Gif 4
      
-    #############################################
-    
-    sender_email = "youremail"
-    
-    receiver_email = ["emails"]
-    
-    password = input("Type your password and press enter:")
-    
-    msg = EmailMessage()
-    
-    # generic email headers
-    msg['Subject'] = subjectline + ' | ' + date
-    msg['From'] = 'Lyrical Shitness'
-    msg['To'] = 'something'
-    
-    # set the plain text body
-    msg.set_content(quote)
-    
-    # set an alternative html body
-    msg.add_alternative("""\
+  
+    # Write Text
+    text = """\
     <html>
         <body style="background: #fff;font: 15px/24px; background-color: #ffffff; margin: 0; -webkit-font-smoothing: antialiased;font-smoothing: antialiased; max-width:500px; margin:auto; padding-top:10vh;">
         <div>
         <div style="text-align:center;">
+        <h1 style="
+    font-family: Menlo, Courier;
+    font-weight: 600;
+    font-size: 38px;
+    text-align: center;
+">GIF-y Lyrical Nonsense</h1>
             <img src="https://i.imgur.com/3iwaXVk.jpg">
-            <img src="{mood}">
+            <img src="{mood}" style="width:80%;">
 
         </div>
             <div class="message-body">
                 <div class="digest" style="margin-bottom: 3rem;">
     
-                    <p style="font-family: Menlo, Courier, Courier New, monospace; line-height: 1.25; font-size: 16px; margin: 0; margin-bottom: 1rem;">Hi, <br> In the past week, I read <strong id="number1">{value1}</strong> unique lines from <strong id="number2">{value2}</strong> different pieces of work by <strong>Schrute, Lennon et. Al, Scott and Styles.</strong></p>
+                    <p style="font-family: Menlo, Courier, Courier New, monospace; line-height: 1.25; font-size: 16px; margin: 0; margin-bottom: 1rem;">Hi, <br> I just read <strong id="number1">{value1}</strong> unique lines from <strong id="number2">{value2}</strong> different pieces of work by <strong>Schrute, Lennon et. Al, Scott and Styles.</strong></p>
     
                     <p style="font-family: Menlo, Courier, Courier New, monospace; line-height: 1.25; font-size: 16px; margin: 0; margin-bottom: 1rem;">This quote caught my eye <strong>{quote}</strong>.</p>
     
@@ -176,7 +167,7 @@ def send_newsletter():
                 </div>
                 <div class="promo" style="margin-bottom: 3rem;">
                     <p style="font-family: Menlo, Courier, Courier New, monospace; line-height: 1.25; font-size: 16px; margin: 0; margin-bottom: 1rem;">
-                    Every week, I read quotes by Michael and Dwight and songs by The Beatles and Harry, and try to write stuff they might write on my own. Since I'm unsupervised, I might say weird stuff from time to time. <br> <br> Sometimes you win, sometimes you lose. Hope this week's writing wasn't complete nonsense. See ya later. 
+                    I read quotes by Michael and Dwight and songs by The Beatles and Harry, and try to write stuff they might write on my own. Since I'm unsupervised, I might say weird stuff from time to time. <br> <br> Sometimes you win, sometimes you lose. Hope this writing wasn't complete nonsense. Thanks for reading.
                     </p>
     
                     <p style="font-family: Menlo, Courier, Courier New, monospace; line-height: 1.25; font-size: 16px; margin: 0; margin-bottom: 1rem;">Have a great week! (ʘ‿ʘ)╯</p>
@@ -200,16 +191,11 @@ def send_newsletter():
                db_id = db_id,
                mh_id = mh_id,
                mb_id = mb_id, 
-               mood = mood), 
-        subtype='html')
+               mood = mood)
         
-    # Create secure connection with server and send email
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-        server.login(sender_email, password)
-        server.sendmail(
-            sender_email, receiver_email, msg.as_string()
-        )
+    file = open("../pages/" + get_monster() + ".html" ,"w", encoding="utf-8")
+    file.write(text)
+    file.close() 
         
     # Update the item for next week
     item = item + 1
@@ -218,4 +204,4 @@ def send_newsletter():
     with open('item.txt', 'w') as filetowrite:
         filetowrite.write(str(item))
     
-    print("Newsletter sent for " + date + ", see you next week!")
+    print("Newsletter generated for " + str(item -1))

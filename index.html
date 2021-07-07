@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💩 </text></svg>">
-    <title>Shitposts for Rhe</title>
+    <title>Lyrical Shitness</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
     <!--FACEBOOK-->
     <meta property="og:image" content="social.png">
@@ -14,8 +15,9 @@
     <meta property="og:image:height" content="1024">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.shitpostsforrhe.netlify.app/" />
-    <meta property="og:title" content="Shitposts for Rhe" />
+    <meta property="og:title" content="Lyrical Shitness" />
     <meta property="og:description" content="Lyrical Shitness From the Desks of Messrs. Dwight Schrute, Lennon et. al, Michael Scott and Harry Styles" />
+    <script src="/scripts/script.js" defer></script>
 </head>
 
 <body>
@@ -30,17 +32,16 @@
                 <div class="container max-w-lg lg:py-24 px-8 py-12 mx-auto text-left md:max-w-none md:text-center leading-3 bg-black bg-opacity-70">
                     <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-white md:text-center sm:leading-none md:text-6xl lg:text-5xl"><span class="inline md:block">From The Desks of Messrs.</span> <span class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-red-600 to-indigo-500 md:inline-block pb-4">Dwight Schrute, <br> Lennon et. al, <br> Michael Scott & <br> Harry Styles</span></h1>
                     <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg leading-relaxed">
-                        <p class="leading-10 text-md break-words font-bold text-white">I heard you like <br class="block lg:hidden"> <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2">< a bunch of things ></span>, <br> so I made <br class="lg:hidden"> <span class="font-bold font-mono bg-gray-200 p-2 text-gray-900 ">< those bunch of things ></span>                            <br> write other
+                        <p class="leading-10 text-md break-words font-bold text-white">I made <br class="block lg:hidden"> <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2">< a bunch of things ></span>, <br> and another <br class="lg:hidden"> <span class="font-bold font-mono bg-gray-200 p-2 text-gray-900 ">< those bunch of things ></span>                            <br> write other
                             <span class="font-bold font-mono bg-gray-200 p-2 text-gray-900">< things ></span>
                         </p>
                     </div>
                     <div class="flex flex-col items-center mt-12 text-center">
                         <span class="relative inline-flex w-full md:w-auto">
-                    <a href="#subscribe" type="button" class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
-                        Subscribe to Shitpost Emails
-                    </a>
-                    <span class="absolute top-0 right-0 px-2 py-1 -mt-3 -mr-2 text-xs font-medium leading-tight text-white bg-green-400 rounded-full">no replies necessary <3</span>
-                        </span>
+                    <a onclick=goTo() type="button" class="inline-flex items-center cursor-pointer justify-center w-full px-4 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                        Generate a Shitpost
+                    </a></span>
+                   
                         <a href="#more" class="mt-3 text-sm text-indigo-500">Or Learn More</a>
                     </div>
                 </div>
@@ -51,34 +52,16 @@
 
     <!-- Section 2 -->
     <section class="w-full bg-white pt-7 pb-7 md:pt-20 md:pb-24 " id="more">
-        <div class="box-border flex flex-col items-center content-center px-8 mx-auto leading-6 text-black border-0 border-gray-300 border-solid md:flex-row max-w-7xl lg:px-16" pb-12>
-
-            <!-- Image -->
-            <div class="box-border relative w-full max-w-md px-4 mt-5 mb-4 -ml-5 text-center bg-no-repeat bg-contain border-solid md:ml-0 md:mt-0 md:max-w-none lg:mb-0 md:w-1/2 xl:pl-10">
-                <img src="https://media.giphy.com/media/HTbDRsSHeu97VeXcBz/giphy.gif" class="">
-            </div>
-
-            <!-- Content -->
-            <div class="box-border order-first w-full text-black border-solid md:w-1/2 md:pl-10 md:order-none">
-                <h2 class="m-0 text-xl font-semibold leading-tight border-0 border-gray-300 lg:text-3xl md:text-2xl">
-                    In These Unprecedented Times,
-                </h2>
-                <p class="pt-4 pb-8 m-0 leading-7 text-gray-700 border-0 border-gray-300 sm:pr-12 xl:pr-32 lg:text-lg">
-                    We are running out of quarantine birthday ideas. <br> For real. I kid you not I don't know what to do Sahana said we should send you a bucket of curd.
-                    <br> <br> Please change your birthday.
-                </p>
-            </div>
-            <!-- End  Content -->
-        </div>
+       
         <div class="box-border flex flex-col items-center content-center px-8 mx-auto mt-2 leading-6 text-black border-0 border-gray-300 border-solid md:mt-20 xl:mt-0 md:flex-row max-w-7xl lg:px-16">
 
             <!-- Content -->
             <div class="box-border w-full text-black border-solid md:w-1/2 md:pl-6 xl:pl-32">
                 <h2 class="m-0 lg:pt-12 text-xl font-semibold leading-tight border-0 border-gray-300 lg:text-3xl md:text-2xl">
-                    This isn't a bucket of curd.
+                    This is a stupid site.
                 </h2>
                 <p class="pt-4 pb-8 m-0 leading-7 text-gray-700 border-0 border-gray-300 sm:pr-10 lg:text-lg">
-                    This website takes all of Harry's and Beatles' songs and all of Michael and Dwight's lines and tries to write lyrics for you all on its own. Since refreshing Gmail is such a fun activity, it will email you the shitposts it writes every weekend.
+                    This website takes all of Harry's and Beatles' songs and all of Michael and Dwight's lines and tries to write lyrics all on its own. More often than not, they are crap. Features:
                 </p>
                 <ul class="p-0 m-0 leading-6 border-0 border-gray-300">
                     <li class="box-border relative py-1 pl-0 text-left text-gray-500 border-solid">
@@ -88,7 +71,7 @@
                         <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-gradient-to-br from-red-600 to-indigo-500 rounded-full"><span class="text-sm font-bold">✓</span></span> That means I have no control.
                     </li>
                     <li class="box-border relative py-1 pl-0 text-left text-gray-500 border-solid">
-                        <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-gradient-to-br from-red-600 to-indigo-500 rounded-full"><span class="text-sm font-bold">✓</span></span> Inshallah its not complete shit.
+                        <span class="inline-flex items-center justify-center w-6 h-6 mr-2 text-white bg-gradient-to-br from-red-600 to-indigo-500 rounded-full"><span class="text-sm font-bold">✓</span></span> Inshallah its not complete nonsense.
                     </li>
                 </ul>
             </div>
@@ -104,21 +87,16 @@
     <!-- Section 3 -->
     <section class="pt-20 bg-white leading-relaxed" id="subscribe">
         <div class="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8 ">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl xl:text-6xl">
-                Look I swear I'll get you something real when we come back
+            <h2 class="text-3xl pb-4 font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl xl:text-6xl">
+               Its not much, but its honest work.
             </h2>
             <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                But if getting emails with lyrics like <br> <br>
                 <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2 text-sm">🎵...those are the groin of the times, stop crying...🎵</span> or <br> <br>
                 <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2 text-sm">🎵...Okay, can you—sl-slouch him into the light. So bright sometimes. I'm selfish, I know. but I carry this feeling when you broke up with a pay raise...🎵</span>                or <br> <br>
-                <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2 text-sm">🎵...i'm just thinking out loud. i don't ever tell you what an honor to have some kinda bladder infection....🎵</span> <br> <br> could be your jam for a while, here
-                it is.
+                <span class="font-bold text-gray-900 font-mono bg-gray-200 p-2 text-sm">🎵...i'm just thinking out loud. i don't ever tell you what an honor to have some kinda bladder infection....🎵</span> 
             </p>
             <div class="flex justify-center mt-8 space-x-3 py-4">
-                <form action="https://tinyletter.com/dundermifflin" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/dundermifflin', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-                    <input type="text" name="email" id="tlemail" data-behavior="placeholder" class="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none bg-gray-100" placeholder="Email address">
-                    <input type="submit" placeholder="Well, alright" class="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg">
-                </form>
+              <button onclick=goTo() class="px-3 py-4 w-1/4 font-medium text-white bg-blue-600 rounded-lg">Generate a Page</button>
             </div>
         </div>
     </section>
@@ -129,7 +107,7 @@
     <section class="bg-white">
         <div class="max-w-screen-xl px-4 pb-8 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
             <p class="mt-8 text-base leading-6 text-center text-gray-400">
-                Built with 🥰 for Payal Pradeep.
+                Built because I was bored.<br> CopyLeft, Who Cares. <br>Year? What is a year? Time has no meaning.
             </p>
         </div>
     </section>

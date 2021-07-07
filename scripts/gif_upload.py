@@ -1,41 +1,44 @@
 from giphypop import upload
 import csv
-from datetime import datetime
 import os.path
 
 def upload_gifs():    
-    gif_path = os.path.abspath("gifs")
+    gif_path = '../gifs/'
     counter = 0
     
-    date = datetime.today().strftime('%Y-%m-%d')
-    dh = gif_path + "dwight_harry_" + date + ".gif"
-    db = gif_path + "dwight_beatles_" + date + ".gif"
-    mh = gif_path + "michael_harry_" + date + ".gif"
-    mb = gif_path + "michael_beatles_" + date + ".gif"
+  # What item are we on?
+    with open('item.txt') as f:
+        item = f.readline()
+    
+    item = int(item)
+    dh = gif_path + "dwight_harry_" + str(item) + ".gif"
+    db = gif_path + "dwight_beatles_" + str(item) + ".gif"
+    mh = gif_path + "michael_harry_" + str(item) + ".gif"
+    mb = gif_path + "michael_beatles_" + str(item) + ".gif"
     
     gif_dict = [
         {
         'path': dh,
         'artists': "dh",
-        'date': date,
+        'item': item,
         'id': ""
         }, 
         {
         'path': db,
         'artists': "db",
-        'date': date,
+        'item': item,
         'id': ""
         },
         {
         'path': mh,
         'artists': "mh",
-        'date': date,
+        'item': item,
         'id': ""
         }, 
          {
         'path': mb,
         'artists': "mb",
-        'date': date,
+        'item': item,
         'id': ""
         }]
     
@@ -43,19 +46,20 @@ def upload_gifs():
     while counter < 4: 
         gif = upload(["shitpostsforrhe"], 
                      gif_dict[counter]['path'], 
-                     username="amnbh", 
-                     api_key="kL0fDnW1p2m8G4eoFZ0yiTXeA0NdcQlL")
+                     username="yourusername", 
+                     api_key="yourkey")
+        print("Uploading GIF #" + str(counter))
         gif = str(gif.id)
         gif_dict[counter]['id'] = gif
         counter = counter + 1
         
-    field_names= ['path', 'artists', 'date', 'id']
+    field_names= ['path', 'artists', 'item', 'id']
     file_exists = os.path.isfile('../data/urls.csv')
     x = 0
 
     # Write headers only if new file
-    with open (os.path.abspath("data/urls"), 'a') as csvfile:
-        field_names= ['path', 'artists', 'date', 'id']
+    with open ('../data/urls.csv', 'a') as csvfile:
+        field_names= ['path', 'artists', 'item', 'id']
         writer = csv.DictWriter(csvfile, delimiter=',', lineterminator='\n',fieldnames=field_names)
     
         if not file_exists:
@@ -64,12 +68,12 @@ def upload_gifs():
         while x < 4:
             writer.writerow({'path': gif_dict[x]['path'], 
                              'artists': gif_dict[x]['artists'],
-                             'date': gif_dict[x]['date'], 
+                             'item': gif_dict[x]['item'], 
                              'id': gif_dict[x]['id']
                              })
             x = x + 1
 
         
-    print("Uploaded GIFs and IDs written to CSV for " + date)
+    print("Uploaded GIFs and IDs written to CSV for " + str(item))
     
     
